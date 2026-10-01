@@ -14,7 +14,7 @@ import datetime
 import random
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
-CORS(app)
+CORS(app, origins="*")
 
 # ─────────────────────────────────────────────
 # Data Loading
@@ -30,15 +30,29 @@ def load_career_data():
     df["recommended_projects"] = df["recommended_projects"].apply(lambda x: [s.strip() for s in x.split(",")])
     return df
 
+# In-memory DB (Render free plan has no persistent disk)
+# Falls back to file if running locally
+IN_MEMORY_DB = {}
+
 def load_db():
-    if os.path.exists(DB_FILE):
-        with open(DB_FILE, "r") as f:
-            return json.load(f)
-    return {}
+    # Try file first (local), fall back to in-memory (Render)
+    try:
+        if os.path.exists(DB_FILE):
+            with open(DB_FILE, "r") as f:
+                return json.load(f)
+    except Exception:
+        pass
+    return dict(IN_MEMORY_DB)
 
 def save_db(data):
-    with open(DB_FILE, "w") as f:
-        json.dump(data, f, indent=2)
+    global IN_MEMORY_DB
+    IN_MEMORY_DB = dict(data)
+    # Also try to write to file (works locally, silently fails on Render)
+    try:
+        with open(DB_FILE, "w") as f:
+            json.dump(data, f, indent=2)
+    except Exception:
+        pass
 
 CAREER_DF = load_career_data()
 
