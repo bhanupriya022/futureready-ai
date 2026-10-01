@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FutureReady AI – Career Readiness Platform</title>
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+<body>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav class="navbar">
+  <div class="nav-brand">⚡ FutureReady AI</div>
+  <div class="nav-links" id="navLinks">
+    <a href="#" class="nav-link active" data-page="home">Home</a>
+    <a href="#" class="nav-link" data-page="profile">Profile</a>
+    <a href="#" class="nav-link" data-page="analysis">Skill Analysis</a>
+    <a href="#" class="nav-link" data-page="roadmap">Roadmap</a>
+    <a href="#" class="nav-link" data-page="interview">Interview Coach</a>
+    <a href="#" class="nav-link" data-page="portfolio">Portfolio</a>
+    <a href="#" class="nav-link" data-page="dashboard">Dashboard</a>
+  </div>
+  <button class="hamburger" id="hamburger">&#9776;</button>
+</nav>
+
+<!-- ═══════════════ PAGES ═══════════════ -->
+<main id="app">
+
+  <!-- ── HOME ── -->
+  <section class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Welcome to <span class="accent">FutureReady AI</span></h1>
+        <p class="hero-sub">Your AI-powered career coach. Discover skill gaps, get a personalized roadmap, practice interviews, and build a professional portfolio — all in one place.</p>
+        <button class="btn btn-primary btn-lg" onclick="navigate('profile')">Get Started →</button>
+      </div>
+      <div class="hero-illustration">
+        <svg viewBox="0 0 300 260" width="300" height="260" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="40" width="260" height="180" rx="16" fill="#f8fafc" stroke="#d1dce8" stroke-width="1.5"/>
+          <rect x="20" y="40" width="260" height="32" rx="16" fill="#e8f0fe"/>
+          <circle cx="42" cy="56" r="6" fill="#dc2626"/>
+          <circle cx="62" cy="56" r="6" fill="#d97706"/>
+          <circle cx="82" cy="56" r="6" fill="#059669"/>
+          <text x="44" y="100" font-family="monospace" font-size="11" fill="#0891b2">&gt; analyzing profile...</text>
+          <text x="44" y="120" font-family="monospace" font-size="11" fill="#059669">✓ skill gap detected</text>
+          <text x="44" y="140" font-family="monospace" font-size="11" fill="#059669">✓ roadmap generated</text>
+          <text x="44" y="160" font-family="monospace" font-size="11" fill="#0e7490">→ missing: Pandas, Flask</text>
+          <text x="44" y="180" font-family="monospace" font-size="11" fill="#5a7a99">career match: 70%</text>
+          <rect x="44" y="196" width="96" height="8" rx="4" fill="#d1dce8"/>
+          <rect x="44" y="196" width="67" height="8" rx="4" fill="#0891b2"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card" onclick="navigate('profile')">
+        <div class="feature-icon">👤</div>
+        <h3>Student Profile</h3>
+        <p>Enter your skills, education, projects, and career goals.</p>
+      </div>
+      <div class="feature-card" onclick="navigate('analysis')">
+        <div class="feature-icon">🔍</div>
+        <h3>Skill-Gap Analysis</h3>
+        <p>AI compares your profile with your target role requirements.</p>
+      </div>
+      <div class="feature-card" onclick="navigate('roadmap')">
+        <div class="feature-icon">🗺️</div>
+        <h3>Personalized Roadmap</h3>
+        <p>Step-by-step learning plan tailored to close your skill gaps.</p>
+      </div>
+      <div class="feature-card" onclick="navigate('interview')">
+        <div class="feature-icon">🎤</div>
+        <h3>AI Interview Coach</h3>
+        <p>Practice HR, technical, and project questions with AI feedback.</p>
+      </div>
+      <div class="feature-card" onclick="navigate('portfolio')">
+        <div class="feature-icon">💼</div>
+        <h3>Portfolio Builder</h3>
+        <p>Showcase projects with AI-generated professional descriptions.</p>
+      </div>
+      <div class="feature-card" onclick="navigate('dashboard')">
+        <div class="feature-icon">📊</div>
+        <h3>Career Dashboard</h3>
+        <p>Track readiness scores, roadmap progress, and growth metrics.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROFILE ── -->
+  <section class="page" id="page-profile">
+    <div class="page-header">
+      <h2>👤 Student Profile</h2>
+      <p class="page-sub">Fill in your academic background and skills. This powers all AI features.</p>
+    </div>
+    <form id="profileForm" class="card-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="p_name" placeholder="e.g. Rahul Sharma" required />
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" id="p_email" placeholder="rahul@example.com" required />
+        </div>
+        <div class="form-group">
+          <label>Degree *</label>
+          <select id="p_degree">
+            <option value="">Select degree</option>
+            <option>B.Tech</option><option>B.E.</option><option>B.Sc</option>
+            <option>MCA</option><option>M.Tech</option><option>BCA</option>
+            <option>MBA</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Specialization / Branch *</label>
+          <input type="text" id="p_spec" placeholder="e.g. Computer Science" />
+        </div>
+        <div class="form-group">
+          <label>Year of Study</label>
+          <select id="p_year">
+            <option value="">Select year</option>
+            <option>1st Year</option><option>2nd Year</option>
+            <option>3rd Year</option><option>4th Year</option>
+            <option>Final Semester</option><option>Graduate</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Target Career *</label>
+          <select id="p_career">
+            <option value="">Select target role</option>
+          </select>
+        </div>
+        <div class="form-group full-width">
+          <label>Programming Skills <span class="hint">(comma-separated)</span></label>
+          <input type="text" id="p_prog" placeholder="e.g. Python, Java, C++" />
+        </div>
+        <div class="form-group full-width">
+          <label>Database Skills <span class="hint">(comma-separated)</span></label>
+          <input type="text" id="p_db" placeholder="e.g. MySQL, MongoDB, PostgreSQL" />
+        </div>
+        <div class="form-group full-width">
+          <label>Web Development Skills <span class="hint">(comma-separated)</span></label>
+          <input type="text" id="p_web" placeholder="e.g. HTML, CSS, React, Node.js" />
+        </div>
+        <div class="form-group full-width">
+          <label>Projects <span class="hint">(comma-separated titles)</span></label>
+          <input type="text" id="p_projects" placeholder="e.g. Todo App, Weather Dashboard" />
+        </div>
+        <div class="form-group full-width">
+          <label>Certifications</label>
+          <input type="text" id="p_certs" placeholder="e.g. AWS Cloud Practitioner, Python Institute PCEP" />
+        </div>
+        <div class="form-group full-width">
+          <label>Internship Experience</label>
+          <textarea id="p_intern" rows="2" placeholder="e.g. 2-month web dev intern at TechCorp (or type 'None')"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Communication Level</label>
+          <select id="p_comm">
+            <option value="">Select level</option>
+            <option>Excellent</option><option>Good</option>
+            <option>Average</option><option>Basic</option><option>Poor</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Problem-Solving Level</label>
+          <select id="p_ps">
+            <option value="">Select level</option>
+            <option>Excellent</option><option>Good</option>
+            <option>Average</option><option>Basic</option><option>Poor</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save Profile &amp; Analyze →</button>
+        <span id="profileStatus" class="status-msg"></span>
+      </div>
+    </form>
+  </section>
+
+  <!-- ── ANALYSIS ── -->
+  <section class="page" id="page-analysis">
+    <div class="page-header">
+      <h2>🔍 AI Skill-Gap Analysis</h2>
+      <p class="page-sub">See exactly what skills you have, what's required, and what's missing for your target role.</p>
+    </div>
+    <div id="analysisPrompt" class="prompt-box">
+      <p>⚠️ Please <a href="#" onclick="navigate('profile')">complete your profile</a> first to run the analysis.</p>
+    </div>
+    <div id="analysisResults" class="hidden">
+      <div class="gap-overview">
+        <div class="gap-card">
+          <div class="gap-number" id="gapMatchPct">—</div>
+          <div class="gap-label">Skill Match</div>
+        </div>
+        <div class="gap-card">
+          <div class="gap-number accent" id="gapMissingCount">—</div>
+          <div class="gap-label">Missing Skills</div>
+        </div>
+        <div class="gap-card">
+          <div class="gap-number green" id="gapMatchedCount">—</div>
+          <div class="gap-label">Skills You Have</div>
+        </div>
+        <div class="gap-card">
+          <div class="gap-number muted" id="gapSalary">—</div>
+          <div class="gap-label">Avg. Salary (INR)</div>
+        </div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label">Profile Match to <span id="gapRole">—</span></div>
+        <div class="progress-track"><div class="progress-fill" id="gapBar" style="width:0%"></div></div>
+        <div class="progress-pct" id="gapBarLabel">0%</div>
+      </div>
+      <div class="skills-columns">
+        <div class="skills-col">
+          <h4>✅ Skills You Have</h4>
+          <div id="matchedSkillsList" class="tag-list"></div>
+        </div>
+        <div class="skills-col">
+          <h4>❌ Missing Skills</h4>
+          <div id="missingSkillsList" class="tag-list"></div>
+        </div>
+        <div class="skills-col">
+          <h4>⭐ Extra Skills</h4>
+          <div id="extraSkillsList" class="tag-list"></div>
+        </div>
+      </div>
+      <div class="ai-rec card-plain">
+        <h4>🤖 AI Recommendation</h4>
+        <p id="aiRecommendation"></p>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" onclick="navigate('roadmap')">View My Roadmap →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ROADMAP ── -->
+  <section class="page" id="page-roadmap">
+    <div class="page-header">
+      <h2>🗺️ Personalized Career Roadmap</h2>
+      <p class="page-sub">Your step-by-step learning journey toward <strong id="roadmapCareer">your target role</strong>.</p>
+    </div>
+    <div id="roadmapPrompt" class="prompt-box">
+      <p>⚠️ Please <a href="#" onclick="navigate('profile')">complete your profile</a> first to generate your roadmap.</p>
+    </div>
+    <div id="roadmapContent" class="hidden">
+      <div class="roadmap-legend">
+        <span class="legend-dot not-started"></span> Not Started
+        <span class="legend-dot in-progress"></span> In Progress
+        <span class="legend-dot completed"></span> Completed
+      </div>
+      <div id="roadmapSteps" class="roadmap-steps"></div>
+      <div class="roadmap-summary card-plain">
+        <span id="roadmapProgress">0/0 steps completed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INTERVIEW COACH ── -->
+  <section class="page" id="page-interview">
+    <div class="page-header">
+      <h2>🎤 AI Interview Coach</h2>
+      <p class="page-sub">Practice HR, technical, and project questions. Get AI feedback instantly.</p>
+    </div>
+    <div class="interview-controls card-plain">
+      <div class="form-group inline-group">
+        <label>Question Type</label>
+        <select id="qType">
+          <option value="technical">Technical</option>
+          <option value="hr">HR / Behavioral</option>
+          <option value="project">Project-Based</option>
+          <option value="followup">Follow-Up</option>
+        </select>
+      </div>
+      <button class="btn btn-secondary" id="getQBtn">Get Question</button>
+    </div>
+    <div id="interviewSession" class="hidden">
+      <div class="interview-question card-plain">
+        <div class="q-badge" id="qTypeBadge">Technical</div>
+        <p id="currentQuestion" class="question-text"></p>
+      </div>
+      <div class="form-group">
+        <label>Your Answer</label>
+        <textarea id="answerInput" rows="5" placeholder="Type your answer here..."></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" id="submitAnswerBtn">Submit for Feedback</button>
+        <button class="btn btn-outline" id="nextQBtn">Next Question</button>
+      </div>
+    </div>
+    <div id="feedbackPanel" class="hidden">
+      <div class="feedback-header">
+        <h3>📋 AI Feedback</h3>
+      </div>
+      <div class="feedback-scores">
+        <div class="fb-score-card">
+          <div class="fb-label">Communication</div>
+          <div class="fb-value" id="fb_comm"></div>
+        </div>
+        <div class="fb-score-card">
+          <div class="fb-label">Technical</div>
+          <div class="fb-value" id="fb_tech"></div>
+        </div>
+        <div class="fb-score-card">
+          <div class="fb-label">Structure</div>
+          <div class="fb-value" id="fb_struct"></div>
+        </div>
+        <div class="fb-score-card">
+          <div class="fb-label">Overall Score</div>
+          <div class="fb-value accent" id="fb_score"></div>
+        </div>
+      </div>
+      <div class="feedback-details">
+        <div class="fb-detail green-bg">
+          <h4>✅ What You Did Well</h4>
+          <ul id="fb_positives"></ul>
+        </div>
+        <div class="fb-detail amber-bg">
+          <h4>💡 Areas to Improve</h4>
+          <ul id="fb_improvements"></ul>
+        </div>
+      </div>
+      <div class="fb-followup card-plain">
+        <strong>🔄 Follow-Up Question:</strong>
+        <span id="fb_followup"></span>
+      </div>
+      <div class="interview-history" id="interviewHistory"></div>
+    </div>
+  </section>
+
+  <!-- ── PORTFOLIO ── -->
+  <section class="page" id="page-portfolio">
+    <div class="page-header">
+      <h2>💼 Professional Portfolio</h2>
+      <p class="page-sub">Add projects, certifications, and achievements. Let AI write your descriptions.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-left">
+        <div class="card-form">
+          <h3>➕ Add Project</h3>
+          <div class="form-group">
+            <label>Project Name</label>
+            <input type="text" id="port_name" placeholder="e.g. Sales Dashboard" />
+          </div>
+          <div class="form-group">
+            <label>Technologies Used</label>
+            <input type="text" id="port_tech" placeholder="e.g. Python, Pandas, Streamlit" />
+          </div>
+          <div class="form-group">
+            <label>Your Role</label>
+            <input type="text" id="port_role" placeholder="e.g. Full Stack Developer" />
+          </div>
+          <div class="form-group">
+            <label>Outcome / Result</label>
+            <input type="text" id="port_outcome" placeholder="e.g. 40% faster reporting for the team" />
+          </div>
+          <button class="btn btn-secondary" id="genDescBtn">✨ Generate AI Description</button>
+          <div class="form-group" style="margin-top:12px">
+            <label>Description (editable)</label>
+            <textarea id="port_desc" rows="4" placeholder="AI description will appear here..."></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" id="addProjectBtn">Add to Portfolio</button>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-right">
+        <h3>📁 My Projects</h3>
+        <div id="projectList" class="project-list">
+          <p class="muted-text">No projects added yet.</p>
+        </div>
+        <div class="portfolio-skills" id="profileSkillsSection">
+          <h3>🛠 Skills Summary</h3>
+          <div id="portfolioSkillTags" class="tag-list"></div>
+        </div>
+        <div class="portfolio-certs" id="profileCertsSection">
+          <h3>🏆 Certifications</h3>
+          <div id="portfolioCerts" class="tag-list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DASHBOARD ── -->
+  <section class="page" id="page-dashboard">
+    <div class="page-header">
+      <h2>📊 Career Readiness Dashboard</h2>
+      <p class="page-sub">Application-generated readiness indicators based on your profile and progress.</p>
+    </div>
+    <div id="dashboardPrompt" class="prompt-box">
+      <p>⚠️ Please <a href="#" onclick="navigate('profile')">complete your profile</a> to view your dashboard.</p>
+    </div>
+    <div id="dashboardContent" class="hidden">
+      <div class="dashboard-scores">
+        <div class="score-card" id="ds_tech">
+          <div class="score-label">Technical Skills</div>
+          <div class="score-ring-wrap">
+            <svg class="score-ring" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#e8f0fe" stroke-width="8"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#0891b2"
+                stroke-width="8" stroke-linecap="round"
+                stroke-dasharray="201" stroke-dashoffset="201"
+                class="ring-fill" id="ring_tech"/>
+            </svg>
+            <div class="score-num" id="score_tech">0/10</div>
+          </div>
+        </div>
+        <div class="score-card" id="ds_comm">
+          <div class="score-label">Communication</div>
+          <div class="score-ring-wrap">
+            <svg class="score-ring" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#e8f0fe" stroke-width="8"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#059669"
+                stroke-width="8" stroke-linecap="round"
+                stroke-dasharray="201" stroke-dashoffset="201"
+                class="ring-fill" id="ring_comm"/>
+            </svg>
+            <div class="score-num" id="score_comm">0/10</div>
+          </div>
+        </div>
+        <div class="score-card" id="ds_ps">
+          <div class="score-label">Problem Solving</div>
+          <div class="score-ring-wrap">
+            <svg class="score-ring" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#e8f0fe" stroke-width="8"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#d97706"
+                stroke-width="8" stroke-linecap="round"
+                stroke-dasharray="201" stroke-dashoffset="201"
+                class="ring-fill" id="ring_ps"/>
+            </svg>
+            <div class="score-num" id="score_ps">0/10</div>
+          </div>
+        </div>
+        <div class="score-card" id="ds_interview">
+          <div class="score-label">Interview Prep</div>
+          <div class="score-ring-wrap">
+            <svg class="score-ring" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#e8f0fe" stroke-width="8"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#dc2626"
+                stroke-width="8" stroke-linecap="round"
+                stroke-dasharray="201" stroke-dashoffset="201"
+                class="ring-fill" id="ring_interview"/>
+            </svg>
+            <div class="score-num" id="score_interview">0/10</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="completeness-bar-wrap card-plain">
+        <div class="completeness-row">
+          <span>Profile Completeness</span>
+          <span id="completeness_pct">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="completeness_bar" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="roadmap-progress-section card-plain">
+        <h3>Roadmap Progress</h3>
+        <div class="rp-bars">
+          <div class="rp-row">
+            <span class="rp-label">✅ Completed</span>
+            <div class="rp-track"><div class="rp-fill green" id="rp_completed" style="width:0%"></div></div>
+            <span class="rp-count" id="rp_completed_n">0</span>
+          </div>
+          <div class="rp-row">
+            <span class="rp-label">🔄 In Progress</span>
+            <div class="rp-track"><div class="rp-fill amber" id="rp_inprog" style="width:0%"></div></div>
+            <span class="rp-count" id="rp_inprog_n">0</span>
+          </div>
+          <div class="rp-row">
+            <span class="rp-label">⬜ Not Started</span>
+            <div class="rp-track"><div class="rp-fill muted-fill" id="rp_ns" style="width:0%"></div></div>
+            <span class="rp-count" id="rp_ns_n">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-actions">
+        <button class="btn btn-outline" onclick="navigate('roadmap')">View Roadmap</button>
+        <button class="btn btn-outline" onclick="navigate('interview')">Practice Interview</button>
+        <button class="btn btn-primary" onclick="refreshDashboard()">Refresh Dashboard</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════ TOAST ═══════════════ -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="static/app.js"></script>
+</body>
+</html>

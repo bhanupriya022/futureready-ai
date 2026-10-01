@@ -1,0 +1,8 @@
+web:
+  - type: web
+    name: futureready-ai-backend
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    plan: free
+    region: oregon
