@@ -411,7 +411,7 @@ def generate_project_description(project_name, tech_used, role, outcome):
 # ─────────────────────────────────────────────
 @app.route("/")
 def index():
-    return send_from_directory(".", "index.html")
+    return send_from_directory(BASE_DIR, "index.html")
 
 # ─────────────────────────────────────────────
 # API: Career Roles
