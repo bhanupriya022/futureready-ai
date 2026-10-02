@@ -2,7 +2,7 @@
    FutureReady AI – Frontend Logic (app.js)
    ════════════════════════════════════════════ */
 
-const API = "https://futureready-ai-2.onrender.com/api";
+const API = "https://futureready-ai-3.onrender.com/api";
 
 /* ─── State ─── */
 let state = {
