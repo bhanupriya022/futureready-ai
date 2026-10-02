@@ -117,9 +117,9 @@ document.getElementById("profileForm").addEventListener("submit", async (e) => {
     showToast("Profile saved! Navigating to Skill Analysis…", "success");
     setTimeout(() => navigate("analysis"), 800);
   } catch (err) {
-    status.textContent = "Server error – is Flask running?";
+    status.textContent = "Server error – could not reach backend.";
     status.className = "status-msg error";
-    showToast("Cannot reach backend. Make sure Flask is running on port 5000.", "error");
+    showToast("Cannot reach backend. The server may be starting up, please try again.", "error");
   }
 });
 
