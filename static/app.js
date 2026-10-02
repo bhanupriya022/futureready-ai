@@ -2,12 +2,7 @@
    FutureReady AI – Frontend Logic (app.js)
    ════════════════════════════════════════════ */
 
-// When deployed: replace the RENDER_URL value with your actual Render backend URL
-// e.g. "https://futureready-ai-backend.onrender.com/api"
-const RENDER_URL = "https://futureready-ai-2.onrender.com/api";
-const API = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost")
-  ? "http://127.0.0.1:5000/api"
-  : RENDER_URL;
+const API = "https://futureready-ai-2.onrender.com/api";
 
 /* ─── State ─── */
 let state = {
